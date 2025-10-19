@@ -1,14 +1,5 @@
 local httpService = game:GetService("HttpService")
 
-local InterfaceManager = {} do
-	InterfaceManager.Folder = "FluentSettings"
-    InterfaceManager.Settings = {
-        Theme = "Dark",
-        Acrylic = true,
-        Transparency = true,
-        MenuKeybind = "LeftControl"
-    }
-
     function InterfaceManager:SetFolder(folder)
 		self.Folder = folder;
 		self:BuildFolderTree()
@@ -78,20 +69,7 @@ local InterfaceManager = {} do
 
         InterfaceTheme:SetValue(Settings.Theme)
 	
-		if Library.UseAcrylic then
-			section:AddToggle("AcrylicToggle", {
-				Title = "Acrylic",
-				Description = "The blurred background requires graphic quality 8+",
-				Default = Settings.Acrylic,
-				Callback = function(Value)
-					Library:ToggleAcrylic(Value)
-                    Settings.Acrylic = Value
-                    InterfaceManager:SaveSettings()
-				end
-			})
-		end
-	
-		section:AddToggle("TransparentToggle", {
+				section:AddToggle("TransparentToggle", {
 			Title = "Transparency",
 			Description = "Makes the interface transparent.",
 			Default = Settings.Transparency,
